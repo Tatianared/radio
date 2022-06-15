@@ -82,7 +82,7 @@ public class RadioTest {
     public void shouldVolume() {
         Radio num = new Radio();
         num.plusVolume();
-        num.volume = 4;
+        num.setVolume(4);
 
         int expected = 5;
         int actual = num.plusVolume();
@@ -94,7 +94,7 @@ public class RadioTest {
     public void shouldVolumeMoreMax() {
         Radio num = new Radio();
         num.plusVolume();
-        num.volume = 15;
+        num.setVolume(15);
 
         int expected = 10;
         int actual = num.plusVolume();
@@ -106,7 +106,7 @@ public class RadioTest {
     public void shouldMinusVolume() {
         Radio num = new Radio();
         num.minusVolume();
-        num.volume = 10;
+        num.setVolume(10);
 
         int expected = 9;
         int actual = num.minusVolume();
@@ -118,7 +118,7 @@ public class RadioTest {
     public void shouldMinusVolumeLessMin() {
         Radio num = new Radio();
         num.minusVolume();
-        num.volume = 0;
+        num.setVolume(0);
 
         int expected = 0;
         int actual = num.minusVolume();
