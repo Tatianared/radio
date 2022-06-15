@@ -4,6 +4,9 @@ public class Radio {
     private int stationNumber;
     private int volume;
 
+    public int getVolume() {
+        return volume;
+    }
 
     public void setVolume(int newVolume) {
         if (newVolume < 0) {
@@ -49,14 +52,14 @@ public class Radio {
     }
 
     public int plusVolume() {
-        if (volume > 0) {
+        if (volume < 10) {
             volume = volume + 1;
-        }
-        if (volume > 10) {
+        } else {
             volume = 10;
         }
         return volume;
     }
+
 
     public int minusVolume() {
         if (volume > 0) {
