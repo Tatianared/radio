@@ -35,11 +35,6 @@ public class Radio {
 
     }
 
-    public Radio(int minVolume, int maxVolume) {
-        this.minVolume = minVolume;
-        this.maxVolume = maxVolume;
-        this.volume = minVolume;
-    }
 
     public void setVolume(int newVolume) {
         if (newVolume < minVolume) {
