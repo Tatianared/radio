@@ -4,6 +4,16 @@ import ru.netology.radio.Radio;
 
 public class RadioTest {
 
+
+    @Test
+    public void shouldDesigner() {
+        Radio num = new Radio(15);
+
+        Assertions.assertEquals(0, num.gerStartNumber());
+        Assertions.assertEquals(14, num.getFinishNumber());
+    }
+
+
     @Test
     public void shouldRadioStation() {
         Radio num = new Radio();
@@ -57,8 +67,8 @@ public class RadioTest {
 
         Radio num = new Radio();
         num.prevNumber();
-        num.setStationNumber(9);
-        int expected = 8;
+        num.setStationNumber(0);
+        int expected = 9;
         int actual = num.prevNumber();
 
         Assertions.assertEquals(expected, actual);
@@ -91,24 +101,36 @@ public class RadioTest {
     }
 
 
-
     @Test
     public void shouldVolumeMoreMax() {
         Radio num = new Radio();
         num.setVolume(15);
 
         int expected = 0;
-        int actual = num.getVolume();
+        int actual = num.getMinVolume();
 
         Assertions.assertEquals(expected, actual);
     }
 
+
     @Test
-    public void shouldMaxVolume(){
+    public void shouldMaxVolume() {
         Radio num = new Radio();
         num.plusVolume();
-        num.setVolume(10);
-        int expected = 10;
+        num.setVolume(50);
+        int expected = 51;
+        int actual = num.plusVolume();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldMoreMaxVolume() {
+        Radio num = new Radio();
+        num.plusVolume();
+        num.setVolume(100);
+        int expected = 100;
         int actual = num.plusVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -133,7 +155,7 @@ public class RadioTest {
         num.setVolume(-1);
 
         int expected = 0;
-        int actual = num.getVolume();
+        int actual = num.getMinVolume();
 
         Assertions.assertEquals(expected, actual);
     }
