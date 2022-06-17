@@ -1,18 +1,46 @@
 package ru.netology.radio;
 
 public class Radio {
-    private int stationNumber;
+    private int startNumber = 0;
+    private int finishNumber = 9;
+    private int stationNumber = startNumber;
+    private int size = 10;
+    private int minVolume = 0;
+    private int maxVolume = 100;
+
     private int volume;
 
-    public int getVolume() {
-        return volume;
+    public int gerStartNumber() {
+        return startNumber;
     }
 
+    public int getFinishNumber() {
+        return finishNumber;
+    }
+
+    public int getMinVolume() {
+        return minVolume;
+    }
+
+    public int getMaxVolume() {
+        return maxVolume;
+    }
+
+    public Radio() {
+
+    }
+
+    public Radio(int size) {
+        finishNumber = startNumber + size - 1;
+
+    }
+
+
     public void setVolume(int newVolume) {
-        if (newVolume < 0) {
+        if (newVolume < minVolume) {
             return;
         }
-        if (newVolume > 10) {
+        if (newVolume > maxVolume) {
             return;
         }
         volume = newVolume;
@@ -24,54 +52,53 @@ public class Radio {
     }
 
     public void setStationNumber(int newStationNumber) {
-        if (newStationNumber < 0) {
+        if (newStationNumber < startNumber) {
             return;
         }
-        if (newStationNumber > 9) {
+        if (newStationNumber > finishNumber) {
             return;
         }
         stationNumber = newStationNumber;
     }
 
     public int nextNumber() {
-        if (stationNumber < 9) {
+        if (stationNumber < finishNumber) {
             stationNumber = stationNumber + 1;
         } else {
-            stationNumber = 0;
+            stationNumber = startNumber;
         }
         return stationNumber;
     }
 
     public int prevNumber() {
-        if (stationNumber > 0) {
+        if (stationNumber > startNumber) {
             stationNumber = stationNumber - 1;
         } else {
-            stationNumber = 9;
+            stationNumber = finishNumber;
         }
         return stationNumber;
     }
 
     public int plusVolume() {
-        if (volume < 10) {
+        if (volume < maxVolume) {
             volume = volume + 1;
         } else {
-            volume = 10;
+            volume = maxVolume;
         }
         return volume;
     }
 
 
     public int minusVolume() {
-        if (volume > 0) {
+        if (volume > minVolume) {
             volume = volume - 1;
         }
-        if (volume <= 0) {
-            volume = 0;
+        if (volume <= minVolume) {
+            volume = minVolume;
         }
         return volume;
     }
 }
-
 
 
 
